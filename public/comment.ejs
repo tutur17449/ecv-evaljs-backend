@@ -1,0 +1,20 @@
+<!-- Importer le header en EJS -->
+<%- include('statics/header') -%>
+
+<main>
+  <h2>Page protégée</h2>
+  <hr />
+  <h3>Comment</h3>
+  <hr />
+  <p>Post : <%- data.data.post.headline %></p>
+  <p>
+    Author : <%- data.data.author.givenName %> <%- data.data.author.familyName
+    %>
+  </p>
+  <p>Content : <%- data.data.content %></p>
+  <%- include('components/form-comment', { method: "update", data: data.data})
+  -%>
+</main>
+
+<!-- Importer le footer en EJS -->
+<%- include('statics/footer') -%>

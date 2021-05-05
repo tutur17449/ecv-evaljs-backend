@@ -1,0 +1,19 @@
+<!-- 
+    Créer le formulaire de connexion
+-->
+
+<form action="/login" method="POST">
+  <label for="email">Email</label>
+  <input
+    type="email"
+    name="email"
+    required
+    minlength="4"
+    value="admin@test.fr"
+  />
+
+  <label for="password">Mot de passe</label>
+  <input type="password" name="password" required minlength="4" value="admin" />
+
+  <button type="submit">Connexion</button>
+</form>

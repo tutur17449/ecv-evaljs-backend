@@ -1,0 +1,45 @@
+<!-- 
+    Créer le formulaire d'ajout de post
+-->
+<% if(method === "update") { %>
+<form
+  name="post_form"
+  id="post_form"
+  action="/post/<%- data._id %>/update"
+  method="POST"
+>
+  <label for="headline">Titre</label>
+  <input
+    type="text"
+    name="headline"
+    required
+    minlength="2"
+    value="<%- data.headline %>"
+  />
+  <label for="body">Contenu</label>
+  <textarea name="body" required minlength="2"><%- data.body %></textarea>
+  <button type="submit" class="button-green">Modifier</button>
+</form>
+<form
+  name="post_form_d"
+  id="post_form_d"
+  action="/post/<%- data._id %>/delete"
+  method="POST"
+>
+  <button type="submit">Supprimer</button>
+</form>
+<% } else { %>
+<form name="post_form" id="post_form" action="/post/create" method="POST">
+  <label for="headline">Titre</label>
+  <input
+    type="text"
+    name="headline"
+    required
+    minlength="2"
+    value="Mon super titre"
+  />
+  <label for="body">Contenu</label>
+  <textarea name="body" required minlength="2">Mon super contenu</textarea>
+  <button type="submit">Ajouter</button>
+</form>
+<% } %>

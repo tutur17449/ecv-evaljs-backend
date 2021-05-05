@@ -1,0 +1,19 @@
+<!-- Importer le header en EJS -->
+<%- include('statics/header') -%>
+
+<main>
+  <h2>Page protégée</h2>
+  <hr />
+  <h3>Ajouter un article</h3>
+  <%- include('components/form-post', { method: "create"}) -%>
+  <hr />
+  <h3>Liste des articles</h3>
+  <% if( data.data ) { %> <% for(let item of data.data) { %>
+  <a href="/post/<%- item._id %>" class="post-card"><%- item.headline %></a>
+  <% } %> <% } else { %>
+  <p>aucun post</p>
+  <% } %>
+</main>
+
+<!-- Importer le footer en EJS -->
+<%- include('statics/footer') -%>

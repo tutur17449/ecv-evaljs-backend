@@ -1,0 +1,26 @@
+<!--
+   Créer un formulaire d'inscription 
+   A ajouter dans la page d'accueil
+-->
+
+<form action="/register" method="POST">
+  <label for="email">Email</label>
+  <input
+    type="email"
+    name="email"
+    required
+    minlength="4"
+    value="test@test.com"
+  />
+
+  <label for="givenName">Prénom</label>
+  <input type="text" name="givenName" required minlength="2" value="test" />
+
+  <label for="familyName">Nom</label>
+  <input type="text" name="familyName" required minlength="4" value="test" />
+
+  <label for="password">Mot de passe</label>
+  <input type="password" name="password" required minlength="4" value="test" />
+
+  <button type="submit">Inscription</button>
+</form>

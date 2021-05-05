@@ -1,0 +1,64 @@
+<!-- 
+    Créer le formulaire d'ajout de commentaire
+-->
+<% if(method === "update") { %>
+<form
+  name="comment_form"
+  id="comment_form"
+  action="/comment/<%- data._id %>/update"
+  method="POST"
+>
+  <input
+    hidden
+    type="text"
+    name="post"
+    id="post"
+    required
+    value="<%- data.post %>"
+  />
+  <label for="email">Commentaire</label>
+  <input
+    type="text"
+    name="content"
+    id="content"
+    required
+    value="<%- data.content %>"
+  />
+
+  <button type="submit" class="button-green">Modifier</button>
+</form>
+<form
+  name="comment_form_d"
+  id="comment_form_d"
+  action="/comment/<%- data._id %>/delete"
+  method="POST"
+>
+  <button type="submit">Supprimer</button>
+</form>
+<% } else { %>
+<form
+  name="comment_form"
+  id="comment_form"
+  action="/comment/create"
+  method="POST"
+>
+  <input
+    hidden
+    type="text"
+    name="post"
+    id="post"
+    required
+    value="<%- post %>"
+  />
+  <label for="email">Commentaire</label>
+  <input
+    type="text"
+    name="content"
+    id="content"
+    required
+    value="test comment"
+  />
+
+  <button type="submit">Ajouter</button>
+</form>
+<% } %>

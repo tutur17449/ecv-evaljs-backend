@@ -1,0 +1,41 @@
+<!-- Importer le header en EJS -->
+<%- include('statics/header') -%>
+
+<main>
+  <h2>Page protégée</h2>
+  <hr />
+  <h3><%- data.data.headline %></h3>
+  <p><%- data.data.body %></p>
+  <%- include('components/form-post', { method: "update", data: data.data}) -%>
+  <hr />
+  <h4>Liste des commentaires</h4>
+  <ul>
+    <% if( data.data.comments.length >0 ) { %> <% for(let item of
+    data.data.comments) { %>
+    <li>
+      <a href="/comment/<%- item._id %>"><%- item.content %></a>
+    </li>
+    <% } %> <% } else { %>
+    <li>aucun commentaire</li>
+    <% } %>
+  </ul>
+  <section>
+    <%- include('components/form-comment', { method: "create", post:
+    data.data._id}) -%>
+  </section>
+  <hr />
+  <h4>Liste des likes</h4>
+  <ul>
+    <% if( data.data.likes.length >0 ) { %> <% for(let item of data.data.likes)
+    { %>
+    <li>
+      <a href="/like/<%- item._id %>"><%- item._id %></a>
+    </li>
+    <% } %> <% } else { %>
+    <li>aucun likes</li>
+    <% } %>
+  </ul>
+</main>
+
+<!-- Importer le footer en EJS -->
+<%- include('statics/footer') -%>

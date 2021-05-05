@@ -1,0 +1,46 @@
+version: "3"
+services:
+  ecv_evaljs_mongo:
+    container_name: ecv_evaljs_mongo
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: ecv_jna
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: abcdefgh
+    volumes:
+      - ./mongodb_data:/data/db
+    networks:
+      - ecv_evaljs_backend
+
+  ecv_evaljs_api:
+    container_name: ecv_evaljs_api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      DATABASE_NAME: ecv_evaljs
+      DATABASE_HOST: ecv_evaljs_mongo
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: root
+      DATABASE_PASSWORD: abcdefgh
+      BCRYPT: smf7WU#wbHS6EvxZYw%N
+      COOKIE_SECRET: K5yy@^YRxdiwbP&^nFaE
+      COOKIE_NAME: ecv_evaljs_t
+      JWT_SECRET: wtwVHK#ERasMeJKg3zoQ
+      PORT: 1933
+      ALLOWED_ORIGINS: localhost
+    env_file:
+      - ./.env
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    ports:
+      - "1933:1933"
+    depends_on:
+      - ecv_evaljs_mongo
+    networks:
+      - ecv_evaljs_backend
+
+networks:
+  ecv_evaljs_backend:
+    external: true
